@@ -126,3 +126,19 @@ STATIC_URL = 'static/'
 # Default primary key field type
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# --- Licensing / signing settings ---
+
+PRIVATE_KEY_PATH = os.getenv(
+    "PRIVATE_KEY_PATH",
+    str(BASE_DIR / "keys" / "main-v1-private.pem"),
+)
+
+SIGNING_KEY_ID = os.getenv(
+    "SIGNING_KEY_ID",
+    "main-v1",  
+)
+
+LICENSE_META_VERSION = int(os.getenv("LICENSE_META_VERSION", "1"))
+LICENSE_META_ALG = os.getenv("LICENSE_META_ALG", "Ed25519")
